@@ -8,17 +8,17 @@ export class AuthenticationService {
 
   constructor(private apiService: ApiService) { }
 
-  async signIn(data) {
-    await this.apiService.signIn(data);
+  async signUp(data) {
+    await this.apiService.signUp(data);
 
-    await this.signUp({
+    await this.signIn({
       email: data.email,
       password: data.password,
     })
   }
 
-  async signUp(data) {
-    const resp = await this.apiService.signUp(data);
+  async signIn(data) {
+    const resp = await this.apiService.signIn(data);
 
     localStorage.setItem('user', JSON.stringify({ email: data.email, token: resp.headers.get('Authorization') }))
   }

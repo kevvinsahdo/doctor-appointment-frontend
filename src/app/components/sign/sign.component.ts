@@ -20,13 +20,13 @@ export class SignComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.signInForm = this.formBuilder.group({
+    this.signUpForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
     })
 
-    this.signUpForm = this.formBuilder.group({
+    this.signInForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
     })
@@ -35,10 +35,8 @@ export class SignComponent implements OnInit {
   get formSignIn() { return this.signInForm.controls; }
   get formSignUp() { return this.signUpForm.controls; }
 
-  
-
-  signUp(data: Object) {
-    this.authenticateService.signUp(data).then((data) => {
+  signIn(data: Object) {
+    this.authenticateService.signIn(data).then((data) => {
       this.loading = false;
       this.router.navigate(['/']);
     }).catch(err => {
@@ -46,28 +44,28 @@ export class SignComponent implements OnInit {
     });
   }
 
-  onSignIn() {
+  onSignUp() {
     this.loading = true;
-    if (this.signInForm.invalid) { 
+    if (this.signUpForm.invalid) { 
       this.loading = false;
       return 
     }
 
-    this.authenticateService.signIn(this.signInForm.value).then((data) => {
-      this.signUp({ email: this.signInForm.value.email, password: this.signInForm.value.password });
+    this.authenticateService.signUp(this.signUpForm.value).then((data) => {
+      this.signIn({ email: this.signUpForm.value.email, password: this.signUpForm.value.password });
     }).catch(err => {
       this.loading = false;
-      this.signInForm.controls['email'].setErrors({ 'exist': true });
+      this.signUpForm.controls['email'].setErrors({ 'exist': true });
     });
   }
 
-  onSignUp() {
+  onSignIn() {
     this.loading = true;
-    if (this.signUpForm.invalid) { 
+    if (this.signInForm.invalid) { 
       this.loading = false
       return 
     }
 
-    this.signUp(this.signUpForm.value);
+    this.signIn(this.signInForm.value);
   }
 }

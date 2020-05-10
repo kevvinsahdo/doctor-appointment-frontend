@@ -28,11 +28,11 @@ export class ApiService {
     return this.httpClient.post(this.SERVER_URL + '/appointments', body).toPromise();
   }
 
-  public async signIn(body: Object) {    
-    return this.httpClient.post(this.SERVER_URL + '/users/signIn', body).toPromise();
+  public async signUp(body: Object) {    
+    return this.httpClient.post(this.SERVER_URL + '/users/signUp', body).toPromise();
   }
 
-  public async signUp(body: Object) {
+  public async signIn(body: Object) {
     return this.httpClient.post(this.SERVER_URL + '/login', body, { observe: 'response'}).toPromise();
   }
 }
