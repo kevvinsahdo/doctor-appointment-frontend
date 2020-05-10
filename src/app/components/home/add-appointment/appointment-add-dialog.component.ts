@@ -46,6 +46,10 @@ export class AddAppointmentDialogComponent {
 
 
     save(): void {
+        if (this.addForm.invalid) {
+            return
+        }
+
         let appointment = {
             doctorId: this.addForm.value['doctorId'],
             date: this.addForm.value['date'].toISOString()
