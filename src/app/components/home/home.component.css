@@ -1,0 +1,24 @@
+table {
+  width: 100%;
+  align-self: center;
+}
+
+div.table-container {
+    width: 80%;
+    margin: auto;
+    margin-top: 1em;
+}
+
+mat-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-appointment-button {
+  top: auto;
+  right: 20px;
+  bottom: 20px;
+  left: auto;
+  position: absolute;
+}
