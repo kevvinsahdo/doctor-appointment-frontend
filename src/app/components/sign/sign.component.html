@@ -1,0 +1,84 @@
+<div class="sign-container">
+    <div class="sign">
+        <mat-card>
+            <mat-tab-group>
+                <mat-tab label="Sign In">
+                    <form class="sign-in-form" [formGroup]="signInForm"
+                        (ngSubmit)="onSignIn()">
+                        <br>
+                        <mat-form-field class="sign-in-form-field"
+                            appearance="outline">
+                            <mat-label> Name </mat-label>
+                            <input matInput formControlName="name">
+                            <mat-error *ngIf="formSignIn.name.errors">
+                                Required field
+                            </mat-error>
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field class="sign-in-form-field"
+                            appearance="outline">
+                            <mat-label> Email </mat-label>
+                            <input matInput formControlName="email">
+                            <mat-error *ngIf="formSignIn.email.errors?.exist">
+                                Email already registered!
+                            </mat-error>
+                            <mat-error *ngIf="formSignIn.email.errors?.invalid">
+                                Required field
+                            </mat-error>
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field class="sign-in-form-field"
+                            appearance="outline">
+                            <mat-label> Password </mat-label>
+                            <input matInput formControlName="password"
+                                type="password">
+                            <mat-error *ngIf="formSignIn.password.errors">
+                                Required field
+                            </mat-error>
+                        </mat-form-field>
+                        <br>
+                        <button class="sign-button" matInput mat-raised-button
+                            color="accent" type="submit"> 
+                                <div class="sign-button-text">
+                                    <ng-template [ngIf]="!loading"> SingIn </ng-template>
+                                    <ng-template [ngIf]="loading"> <mat-spinner class="mat-spinner-loading" [diameter]="20"></mat-spinner></ng-template> 
+                                </div>
+                        </button>
+                    </form>
+                </mat-tab>
+                <mat-tab label="Sign Up">
+                    <form class="sign-up-form" [formGroup]="signUpForm"
+                        (ngSubmit)="onSignUp()">
+                        <br>
+                        <mat-form-field class="sign-up-form-field"
+                            appearance="outline">
+                            <mat-label> Email </mat-label>
+                            <input matInput formControlName="email">
+                            <mat-error *ngIf="formSignUp.email.errors">
+                                Required field
+                            </mat-error>
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field class="sign-up-form-field"
+                            appearance="outline">
+                            <mat-label> Password </mat-label>
+                            <input matInput formControlName="password"
+                                type="password">
+                            <mat-error *ngIf="formSignUp.password.errors">
+                                Required field
+                            </mat-error>
+                        </mat-form-field>
+                        <br>
+                        <button class="sign-button" matInput mat-raised-button
+                            color="accent" type="submit"> 
+                                <div class="sign-button-text">
+                                    <ng-template [ngIf]="!loading"> SingIn </ng-template>
+                                    <ng-template [ngIf]="loading"> <mat-spinner class="mat-spinner-loading" [diameter]="20"></mat-spinner></ng-template> 
+                                </div>
+                        </button>
+                    </form>
+                </mat-tab>
+            </mat-tab-group>
+        </mat-card>
+    </div>
+</div>

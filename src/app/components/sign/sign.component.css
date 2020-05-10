@@ -1,0 +1,26 @@
+.sign-container {
+    text-align: center;
+    margin: 3em;   
+}
+
+.sign {
+    display: inline-block;
+}
+
+.sign-button {
+    margin: 1em;
+}
+
+.sign-button-text {
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.mat-spinner-loading {
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
