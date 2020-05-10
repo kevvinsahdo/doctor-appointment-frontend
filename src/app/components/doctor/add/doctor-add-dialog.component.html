@@ -1,0 +1,14 @@
+<h1 mat-dialog-title> Create doctor </h1>
+<div mat-dialog-content [formGroup]="addForm">
+    <mat-form-field appearance="outline">
+        <mat-label> Name </mat-label>
+        <input matInput formControlName="name">
+        <mat-error *ngIf="form.name.errors">
+            Required field
+        </mat-error>
+    </mat-form-field>
+    
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button color="accent" (click)="save()"> Save </button>
+</div>
