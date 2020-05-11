@@ -35,11 +35,12 @@ export class SignComponent implements OnInit {
   get formSignIn() { return this.signInForm.controls; }
   get formSignUp() { return this.signUpForm.controls; }
 
-  signIn(data: Object) {
+  signIn(data: Object, form: FormGroup) {
     this.authenticateService.signIn(data).then((data) => {
       this.loading = false;
       this.router.navigate(['/']);
-    }).catch(err => {
+    }).catch(err => {      
+      form.controls['password'].setErrors({ 'incorrect': true })
       this.loading = false;
     });
   }
@@ -52,7 +53,7 @@ export class SignComponent implements OnInit {
     }
 
     this.authenticateService.signUp(this.signUpForm.value).then((data) => {
-      this.signIn({ email: this.signUpForm.value.email, password: this.signUpForm.value.password });
+      this.signIn({ email: this.signUpForm.value.email, password: this.signUpForm.value.password }, this.signUpForm);
     }).catch(err => {
       this.loading = false;
       this.signUpForm.controls['email'].setErrors({ 'exist': true });
@@ -66,6 +67,6 @@ export class SignComponent implements OnInit {
       return 
     }
 
-    this.signIn(this.signInForm.value);
+    this.signIn(this.signInForm.value, this.signInForm);   
   }
 }

@@ -18,9 +18,12 @@ export class AuthenticationService {
   }
 
   async signIn(data) {
-    const resp = await this.apiService.signIn(data);
-
-    localStorage.setItem('user', JSON.stringify({ email: data.email, token: resp.headers.get('Authorization') }))
+    try {
+      const resp = await this.apiService.signIn(data);
+      localStorage.setItem('user', JSON.stringify({ email: data.email, token: resp.headers.get('Authorization') }))
+    } catch (error) {
+      throw error;
+    }
   }
 
   logOut() {

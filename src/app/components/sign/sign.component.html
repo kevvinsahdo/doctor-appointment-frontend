@@ -54,7 +54,10 @@
                             appearance="outline">
                             <mat-label> Email </mat-label>
                             <input matInput formControlName="email">
-                            <mat-error *ngIf="formSignIn.email.errors">
+                            <mat-error *ngIf="formSignIn.email.errors?.incorrect">
+                                Email incorrect
+                            </mat-error>
+                            <mat-error *ngIf="formSignIn.email.errors?.invalid">
                                 Required field
                             </mat-error>
                         </mat-form-field>
@@ -64,7 +67,10 @@
                             <mat-label> Password </mat-label>
                             <input matInput formControlName="password"
                                 type="password">
-                            <mat-error *ngIf="formSignIn.password.errors">
+                            <mat-error *ngIf="formSignIn.password.errors?.incorrect">
+                                Password incorrect
+                            </mat-error>
+                            <mat-error *ngIf="formSignIn.password.errors?.invalid">
                                 Required field
                             </mat-error>
                         </mat-form-field>
